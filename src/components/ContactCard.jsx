@@ -51,7 +51,7 @@ const ContactCard = ({ contact }) => {
         </div>
         <div className="d-flex flex-column align-items-end">
           <Link
-            to={`/editcontact/${contact.id}`}
+            to={`/addcontact/${contact.id}`}
             className="btn btn-warning mb-2"
           >
             <i className="bi bi-pencil"></i>

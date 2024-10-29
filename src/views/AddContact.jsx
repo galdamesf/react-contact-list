@@ -50,17 +50,21 @@ export const AddContact = () => {
 
     let response;
     if (params.id) {
-      // Asegúrate de usar 'id' aquí
       response = await actions.updateContact(contact, params.id);
     } else {
       response = await actions.createContact(contact);
     }
 
+    console.log(response);
+
     if (response) {
-      Swal.fire("Contacto agregado con éxito!");
+      const message = params.id
+        ? "Contacto editado con éxito"
+        : "Contacto agregado con éxito";
+      Swal.fire(message, "", "success");
       setInputValue({ fullName: "", email: "", phone: "", address: "" });
     } else {
-      Swal.fire("Error al agregar contacto");
+      Swal.fire("Error al agregar contacto", "", "error");
     }
   };
 

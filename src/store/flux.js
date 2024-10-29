@@ -81,6 +81,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         } catch (error) {
           console.log(error);
+          return false;
         }
       },
       deleteContact: async (id) => {
@@ -124,7 +125,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
           if (response.ok) {
             console.log("Datos de contacto actualizados con éxito!");
-            getActions().getContactList();
+            await getActions().getContactList();
+            return true;
           } else {
             console.log("Error: ", response.status, response.statusText);
 
@@ -132,6 +134,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         } catch (error) {
           console.log(error);
+          return false;
         }
       },
     },
